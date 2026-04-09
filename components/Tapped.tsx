@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View , ScrollView } from 'react-native'
+import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import React from 'react'
 
 export default function Tapped() {
@@ -27,7 +27,7 @@ export default function Tapped() {
                 <View style={styles.cards}>
                     <Text style={[styles.headingtext]}>box6</Text>
                 </View>
-                </ScrollView>
+            </ScrollView>
         </View>
     )
 }
@@ -40,14 +40,22 @@ const styles = StyleSheet.create({
         padding: 8,
     }
     , container: {
-
+padding:9,
     }
     , cards: {
         width: 100,
         height: 100,
+        borderWidth: 2,
+        borderColor: 'black',
+        borderStyle: 'solid',
+        marginLeft: 5,
+        backgroundColor: 'red',
+      
     }
     , cardelevated: {
-        backgroundColor: 'orange'
-        ,
+        backgroundColor: 'purple'
+        , width: "70%"
+        , margin: 'auto',
+        borderRadius:5
     }
 })
