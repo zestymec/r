@@ -7,25 +7,25 @@ export default function Fancyimagescard() {
     <View>
       <Text style={styles.headingtext}>Fancyimagescard</Text>
       <View style={[styles.card,]}>
-      <Image 
-  source={require('./React-native-2-logo.png')}  
-  style={styles.cardimage} 
-/>
-         
+        <Image
+          source={require('./React-native-2-logo.png')}
+          style={styles.cardimage}
+        />
+
         <View style={styles.cardbody}>
           <Text style={styles.cardTitle}>
-            Java script 675
+            React JS
           </Text>
           <Text style={styles.cardheading}>
-            Java vs Script
+            React is Js library
           </Text>
+          <Text style={styles.cardFooter}>React is used to design ui</Text>
           <Text style={styles.carddescription}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus voluptate quas amet repellat exercitationem?
           </Text>
           <Text style={styles.cardcomment}>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus voluptate quas amet repellat exercitationem?
+            12 min ago
           </Text>
-          <Text style={styles.cardFooter}>Footer hun me </Text>
         </View>
       </View>
 
@@ -44,58 +44,52 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     borderRadius: 100,
-    // backgroundColor: 'red', 
     alignSelf: 'center',
-    marginVertical: 20
+    marginVertical: 1,
+    backgroundColor: "red",
   }
 
   , card: {
     backgroundColor: "pink",
     marginHorizontal: 'auto',
     marginVertical: 20,
-    borderRadius:10,
-    padding:22,
-    width:"80%",
-    
-    shadowColor:'red',
-    shadowOpacity:5,
+    borderRadius: 20,
+    padding: 22,
+    width: "80%",
+    shadowColor: 'red',
+    shadowOpacity: 5,
   },
   cardbody: {
-
+    width: '90%',
+    marginHorizontal: 'auto',
   }
   , cardTitle: {
     color: 'black',
     fontWeight: 'bold',
     marginVertical: 5,
-    fontSize: 30,
-    textAlign:'center'
+    fontSize: 40,
+   
   },
   cardheading: {
-    color: 'white',
+    color: 'black',
     fontWeight: 'bold',
-    marginHorizontal: 'auto',
-    marginVertical: 20,
-    fontSize: 24,
+    fontSize: 30,
   },
   carddescription: {
-    color: 'white',
-    fontWeight: 'bold',
-marginHorizontal: 'auto',
+    color: 'black',
     marginVertical: 4,
-    fontSize: 24,
+    fontSize: 22,
   }
   , cardcomment: {
-    color: 'white',
+    color: 'black',
     fontWeight: 'bold',
-marginHorizontal: 'auto',
+   marginStart:2,
     marginVertical: 3,
-    fontSize: 24,
+    fontSize: 18,
   }
   , cardFooter: {
-    color: 'white',
-    fontWeight: 'bold',
-marginHorizontal: 'auto',
+    color: 'black',
     marginVertical: 4,
-    fontSize: 24,
+    fontSize: 22,
   }
 })
