@@ -1,29 +1,32 @@
-import { StyleSheet, Text, View, Linking, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Linking, Image, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
 
 export default function Actioncard() {
- 
-    function openwebsite(Websitelink) {
-        Linking.openURL(Websitelink)
+
+    const openWebsite = async (websiteLink: string) => {
+        const supported = await Linking.canOpenURL(websiteLink);
+        if (supported) {
+            await Linking.openURL(websiteLink);
+        } else {
+            console.log("Error opening URL: " + websiteLink);
+        }
     }
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.headingtext}>Blog Card</Text>
+        <ScrollView style={styles.container}>
+            <Text style={styles.headingText}>Blog Card</Text>
             
             <View style={styles.card}>
-            
                 <View style={styles.headerContainer}>
-                    <Text style={styles.cardheading}>What's New in JavaScript -- ES6</Text>
+                    <Text style={styles.cardHeading}>What's New in JavaScript -- ES6</Text>
                 </View>
 
                 <Image
                     source={{ uri: 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' }}
-                    style={styles.cardimage}
+                    style={styles.cardImage}
                 />
 
-             
-                <View style={styles.cardbody}>
+                <View style={styles.cardBody}>
                     <Text style={styles.bodyText} numberOfLines={3}>
                         ES6 (ECMAScript 2015) brought major updates like Arrow functions, 
                         Classes, Template Literals, and Let/Const. It changed the way 
@@ -33,75 +36,110 @@ export default function Actioncard() {
 
                 <View style={styles.footerContainer}>
                     <TouchableOpacity 
+                        activeOpacity={0.8}
                         style={styles.button}
-                        onPress={() => openwebsite('https://www.learnvern.com/javascript-tutorials/introduction-to-javascript')}
+                        onPress={() => openWebsite('https://www.learnvern.com/javascript-tutorials/introduction-to-javascript')}
                     >
                         <Text style={styles.buttonText}>Read More</Text>
                     </TouchableOpacity>
                 </View>
             </View>
-        </View>
+
+            <View style={styles.infoBox}>
+                <Text numberOfLines={4} style={styles.infoText}>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique excepturi perferendis voluptatem praesentium molestiae...
+                </Text>
+            </View>
+
+            <View style={[styles.infoBox, styles.redInfoBox]}>
+                <Text numberOfLines={4} style={styles.redText}>
+                    Important Note: Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique excepturi perferendis...
+                </Text>
+            </View>
+        </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         padding: 10,
+        backgroundColor: '#F5F6FA',
     },
-    headingtext: {
-        color: '#000000',
-        fontSize: 24,
+    headingText: {
+        color: '#2F3640',
+        fontSize: 26,
         fontWeight: 'bold',
-        paddingHorizontal: 8,
-        marginBottom: 10,
+        marginBottom: 15,
+        marginTop: 10,
     },
     card: {
         backgroundColor: '#FFFFFF',
-        borderRadius: 10,
-    
-        elevation: 4,
-
-        shadowOffset: { width: 1, height: 1 },
-        shadowColor: '#333',
-        shadowOpacity: 0.3,
+        borderRadius: 12,
+        overflow: 'hidden',
+        elevation: 6,
+        shadowOffset: { width: 0, height: 3 },
+        shadowColor: '#000',
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+        marginBottom: 20,
     },
     headerContainer: {
-        height: 40,
+        height: 50,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
     },
-    cardheading: {
-        color: '#000',
-        fontSize: 16,
-        fontWeight: '600',
+    cardHeading: {
+        color: '#2F3640',
+        fontSize: 17,
+        fontWeight: 'bold',
     },
-    cardimage: {
-        height: 180, 
+    cardImage: {
+        height: 200, 
         width: '100%',
     },
-    cardbody: {
-        padding: 10,
+    cardBody: {
+        padding: 15,
     },
     bodyText: {
-        color: '#2C3E50',
+        color: '#7F8C8D',
         fontSize: 14,
+        lineHeight: 20,
     },
     footerContainer: {
-        padding: 10,
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
+        padding: 15,
         alignItems: 'center',
     },
     button: {
         backgroundColor: '#E67E22',
-        paddingHorizontal: 20,
-        paddingVertical: 8,
-        borderRadius: 6,
+        paddingHorizontal: 30,
+        paddingVertical: 12,
+        borderRadius: 8,
     },
     buttonText: {
         color: '#FFF',
-        fontSize: 14,
-        fontWeight: 'bold',
+        fontSize: 16,
+        fontWeight: '600',
+    },
+    infoBox: {
+        marginVertical: 10,
+        padding: 15,
+        backgroundColor: '#FFF',
+        borderRadius: 8,
+        borderLeftWidth: 5,
+        borderRightWidth: 5,
+        borderLeftColor: '#E67E22',
+    },
+    redInfoBox: {
+        borderLeftColor: 'red',
+        borderRightColor: 'red',
+        backgroundColor: '#FFF5F5',
+    },
+    infoText: {
+        color: '#333',
+    },
+    redText: {
+        color: 'red',
     }
 })
